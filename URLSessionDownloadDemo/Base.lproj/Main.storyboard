@@ -109,9 +109,41 @@
                     <view key="view" contentMode="scaleToFill" id="HlW-at-Kje">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rYY-xL-ZEX">
+                                <rect key="frame" x="16" y="64" width="343" height="2"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vpr-By-obO">
+                                <rect key="frame" x="156.5" y="86" width="62" height="30"/>
+                                <state key="normal" title="开始下载"/>
+                                <connections>
+                                    <action selector="download:" destination="r2u-Du-WQn" eventType="touchUpInside" id="21x-UV-GSe"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qd-OF-5E2">
+                                <rect key="frame" x="67.5" y="136" width="240" height="240"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="OIU-3x-Ga2"/>
+                                    <constraint firstAttribute="height" constant="240" id="dYC-pi-mLm"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="rYY-xL-ZEX" firstAttribute="leading" secondItem="HlW-at-Kje" secondAttribute="leadingMargin" id="9lF-qE-nRn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="rYY-xL-ZEX" secondAttribute="trailing" id="ABJ-7t-5mg"/>
+                            <constraint firstItem="1qd-OF-5E2" firstAttribute="centerX" secondItem="HlW-at-Kje" secondAttribute="centerX" id="JVk-AC-wiL"/>
+                            <constraint firstItem="Vpr-By-obO" firstAttribute="centerX" secondItem="HlW-at-Kje" secondAttribute="centerX" id="THO-YM-yUY"/>
+                            <constraint firstItem="rYY-xL-ZEX" firstAttribute="top" secondItem="acp-aB-qGF" secondAttribute="top" id="ssk-f3-QBg"/>
+                            <constraint firstItem="Vpr-By-obO" firstAttribute="top" secondItem="rYY-xL-ZEX" secondAttribute="bottom" constant="20" id="wU7-fS-KTa"/>
+                            <constraint firstItem="1qd-OF-5E2" firstAttribute="top" secondItem="Vpr-By-obO" secondAttribute="bottom" constant="20" id="x2I-7S-Swl"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="acp-aB-qGF"/>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="1qd-OF-5E2" id="3RV-vm-0tn"/>
+                        <outlet property="progressView" destination="rYY-xL-ZEX" id="CCO-ca-NcR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eju-iE-mvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

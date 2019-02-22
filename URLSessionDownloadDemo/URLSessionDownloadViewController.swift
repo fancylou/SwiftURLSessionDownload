@@ -14,9 +14,8 @@ import UIKit
 
 class URLSessionDownloadViewController: UIViewController {
     
-    var progressView1: UIProgressView?
-    var imageView1: UIImageView?
-    
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var imageView: UIImageView!
     
     
     private var responseData: Data? = nil
@@ -25,22 +24,6 @@ class URLSessionDownloadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "URLSession下载Demo"
-        // 进度条
-        self.progressView1 = UIProgressView(progressViewStyle: .default)
-        let y = self.navigationController?.navigationBar.frame.height ?? 44
-        //刘海屏要加44
-        self.progressView1?.frame = CGRect(x: 0, y: y + 44, width: SCREEN_WIDTH, height: 2)
-        self.progressView1?.progressTintColor = UIColor.red
-        self.progressView1?.trackTintColor = UIColor.black
-        self.view.addSubview(self.progressView1!)
-        // 开始按钮
-        let downLoadBtn = UIButton(frame: CGRect(x: (SCREEN_WIDTH - 100)/2.0, y: 164, width: 100, height: 40))
-        downLoadBtn .setTitle("开始下载", for: .normal)
-        downLoadBtn .addTarget(self, action: #selector(beginDownload), for: .touchUpInside)
-        downLoadBtn.backgroundColor = UIColor.gray
-        self.view.addSubview(downLoadBtn)
-        imageView1 = UIImageView(frame: CGRect(x: (SCREEN_WIDTH - 200)/2.0, y: 224, width: 200, height: 200))
-        self.view.addSubview(imageView1!)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -49,13 +32,8 @@ class URLSessionDownloadViewController: UIViewController {
         self.responseData = nil
     }
     
-    @objc func beginDownload()  {
-        let url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550815082617&di=b1d5d17090ce541bd8e076efaf4a8eec&imgtype=0&src=http%3A%2F%2Fy0.ifengimg.com%2Fifengimcp%2Fpic%2F20140822%2Fd69e0188b714ee789e97_size87_w800_h1227.jpg"
-        download(url)
-    }
-    
-    
-    private func download(_ url: String) {
+    @IBAction func download(_ sender: UIButton) {
+        let url = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550849217145&di=fe0f31c4158338967ce7fd3ab13f2b7c&imgtype=0&src=http%3A%2F%2Fwww.himitukiti.jp%2Fhot%2Fftp-box%2Fimg20150501233536.jpg"
         guard self.session == nil else {
             print("正在下载。。。。")
             return
@@ -73,14 +51,13 @@ class URLSessionDownloadViewController: UIViewController {
         let downloadTask = session?.dataTask(with: urlRequest)
         // 开始下载
         downloadTask?.resume()
-        
     }
     
-    private func freshUI(progress: Float, error: Error?) {
-        self.progressView1?.setProgress(progress, animated: true)
+    private func refreshUI(progress: Float, error: Error?) {
+        self.progressView?.setProgress(progress, animated: true)
         print("进度1：\(progress)")
         if error == nil, self.responseData != nil {
-            self.imageView1?.image = UIImage(data: self.responseData!)
+            self.imageView?.image = UIImage(data: self.responseData!)
         }else {
             print("error1:\(String(describing: error))")
         }
@@ -113,7 +90,7 @@ extension URLSessionDownloadViewController: URLSessionDataDelegate {
         print("current: \(currentLength) , total:\(totalLength), progress:\(progress)")
         weak var downloadSelf = self
         DispatchQueue.main.async {
-            downloadSelf?.freshUI(progress: progress, error: nil)
+            downloadSelf?.refreshUI(progress: progress, error: nil)
         }
     }
     //下载结束 error有值表示失败
@@ -121,7 +98,7 @@ extension URLSessionDownloadViewController: URLSessionDataDelegate {
         print("下载完成")
         weak var downloadSelf = self
         DispatchQueue.main.async {
-            downloadSelf?.freshUI(progress: 1.0, error: error)
+            downloadSelf?.refreshUI(progress: 1.0, error: error)
             downloadSelf?.session?.invalidateAndCancel()
             downloadSelf?.session = nil
             downloadSelf?.responseData  = nil
