@@ -44,9 +44,7 @@ class URLSessionDownloadViewController: UIViewController {
         //不需要缓存
         urlRequest.cachePolicy = .reloadIgnoringLocalCacheData
         // session会话
-        let config = URLSessionConfiguration.default
-        
-        session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        session = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
         // 创建下载任务
         let downloadTask = session?.dataTask(with: urlRequest)
         // 开始下载
@@ -82,7 +80,7 @@ extension URLSessionDownloadViewController: URLSessionDataDelegate {
         self.responseData?.append(data)
         let currentLength = Float(self.responseData?.count ?? 0)
         // 这里有个问题 有些自己做的数据返回 header里面没有length 那就无法计算进度
-        let totalLength = Float(dataTask.response?.expectedContentLength ?? 1)
+        let totalLength = Float(dataTask.response?.expectedContentLength ?? -1)
         var progress = currentLength / totalLength
         if totalLength<0 {
             progress = 0.0
