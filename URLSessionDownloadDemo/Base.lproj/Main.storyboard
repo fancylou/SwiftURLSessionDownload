@@ -57,37 +57,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="Efl-fB-yNE" customClass="TaskTableViewCell" customModule="URLSessionDownloadDemo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="taskCell" id="Efl-fB-yNE" customClass="TaskTableViewCell" customModule="URLSessionDownloadDemo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Efl-fB-yNE" id="erM-7J-430">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-nk-1XC">
-                                            <rect key="frame" x="26" y="19.5" width="283" height="5"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="niz-F3-lw6">
+                                            <rect key="frame" x="324" y="7" width="31" height="30"/>
+                                            <state key="normal" title="开始"/>
+                                            <connections>
+                                                <action selector="tapStartBtn:" destination="Efl-fB-yNE" eventType="touchUpInside" id="fic-4k-moL"/>
+                                            </connections>
+                                        </button>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Xop-oP-kRt">
+                                            <rect key="frame" x="0.0" y="0.0" width="275" height="43.5"/>
+                                            <subviews>
+                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-nk-1XC">
+                                                    <rect key="frame" x="0.0" y="0.0" width="275" height="10"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="10" id="0jz-f7-y32"/>
+                                                    </constraints>
+                                                </progressView>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="准备" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgW-Ad-ON4">
+                                                    <rect key="frame" x="0.0" y="10" width="33" height="33.5"/>
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="5" id="0jz-f7-y32"/>
+                                                <constraint firstItem="uBZ-nk-1XC" firstAttribute="leading" secondItem="Xop-oP-kRt" secondAttribute="leading" id="Ckj-2A-VaM"/>
+                                                <constraint firstAttribute="trailing" secondItem="uBZ-nk-1XC" secondAttribute="trailing" id="PNe-8w-7vu"/>
                                             </constraints>
-                                        </progressView>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="准备" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgW-Ad-ON4">
-                                            <rect key="frame" x="314" y="13.5" width="51" height="17"/>
-                                            <nil key="textColor"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
+                                        </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="MgW-Ad-ON4" firstAttribute="centerY" secondItem="erM-7J-430" secondAttribute="centerY" id="6sn-Yg-EmJ"/>
-                                        <constraint firstItem="uBZ-nk-1XC" firstAttribute="centerY" secondItem="erM-7J-430" secondAttribute="centerY" id="Fzr-rj-x9j"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="uBZ-nk-1XC" secondAttribute="trailing" constant="50" id="Qhx-tN-abj"/>
-                                        <constraint firstItem="uBZ-nk-1XC" firstAttribute="leading" secondItem="erM-7J-430" secondAttribute="leadingMargin" constant="10" id="gXj-jM-v8b"/>
-                                        <constraint firstAttribute="trailing" secondItem="MgW-Ad-ON4" secondAttribute="trailing" constant="10" id="tW9-T2-ePG"/>
-                                        <constraint firstItem="MgW-Ad-ON4" firstAttribute="leading" secondItem="uBZ-nk-1XC" secondAttribute="trailing" constant="5" id="u4F-JG-FLZ"/>
+                                        <constraint firstItem="Xop-oP-kRt" firstAttribute="top" secondItem="erM-7J-430" secondAttribute="top" id="2BR-Xp-ZLX"/>
+                                        <constraint firstItem="niz-F3-lw6" firstAttribute="centerY" secondItem="erM-7J-430" secondAttribute="centerY" id="AAF-cC-qnx"/>
+                                        <constraint firstAttribute="trailing" secondItem="Xop-oP-kRt" secondAttribute="trailing" constant="100" id="BIA-9A-Yed"/>
+                                        <constraint firstAttribute="trailing" secondItem="niz-F3-lw6" secondAttribute="trailing" constant="20" id="NbB-Zb-ybh"/>
+                                        <constraint firstItem="Xop-oP-kRt" firstAttribute="leading" secondItem="erM-7J-430" secondAttribute="leading" id="OgM-xR-GYJ"/>
+                                        <constraint firstAttribute="bottom" secondItem="Xop-oP-kRt" secondAttribute="bottom" id="Wlh-FI-qcN"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="progressView" destination="uBZ-nk-1XC" id="fx9-Ca-fEb"/>
+                                    <outlet property="startBtn" destination="niz-F3-lw6" id="odL-js-Nq0"/>
                                     <outlet property="statusText" destination="MgW-Ad-ON4" id="mWv-pL-Y1O"/>
                                 </connections>
                             </tableViewCell>

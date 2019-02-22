@@ -40,12 +40,9 @@ class Downloader: NSObject {
         DispatchQueue.global().async {
             var request = URLRequest(url: self.downloadUrl!)
             request.httpMethod = "GET"
-            //不需要缓存
             request.cachePolicy = .reloadIgnoringLocalCacheData
             // session会话
-            let config = URLSessionConfiguration.default
-            
-            self.downloadSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+            self.downloadSession = URLSession(configuration: .default, delegate: self, delegateQueue: nil)
             // 创建下载任务
             let downloadTask = self.downloadSession?.dataTask(with: request)
             // 开始下载
@@ -62,6 +59,8 @@ class Downloader: NSObject {
         self.downloadSession?.invalidateAndCancel()
         self.downloadSession = nil
         self.fileOutputStream = nil
+        // 结束下载的线程
+        CFRunLoopStop(self.downloadLoop)
     }
     
     
@@ -89,7 +88,6 @@ extension Downloader: URLSessionDataDelegate {
         _ = data.withUnsafeBytes {
             self.fileOutputStream?.write($0, maxLength: data.count)
         }
-        
         currentLength += Float(data.count)
         // 这里有个问题 有些自己做的数据返回 header里面没有length 那就无法计算进度
         let totalLength = Float(dataTask.response?.expectedContentLength ?? -1)
@@ -102,14 +100,13 @@ extension Downloader: URLSessionDataDelegate {
     }
     //下载结束 error有值表示失败
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        print("下载完成")
+        print("下载完成...........urlSession")
         self.fileOutputStream?.close()
+        self.cancel()
         if error != nil {
             self.fail?(String(describing: error))
         }else {
             self.completion?(self.localUrl?.absoluteString ?? "")
         }
-        CFRunLoopStop(self.downloadLoop)
-        self.cancel()
     }
 }

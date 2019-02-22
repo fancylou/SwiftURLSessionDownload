@@ -10,7 +10,9 @@ import Foundation
 
 
 class DownloaderManager: NSObject {
+    
     static let shared : DownloaderManager = DownloaderManager()
+    
     // 下载缓存池
     private var downloadCache: Dictionary<String, Downloader>
     private var failback: DownloadFailClosure?

@@ -10,8 +10,7 @@ import UIKit
 
 class DownloadManagerTableViewController: UITableViewController {
 
-    private var items:[String] = []
-    private let modalUrls = [
+    private var items:[String] = [
         "https://obs-course.obs.cn-east-2.myhwclouds.com/develop_guide_simple_form.mp4"
         ,"https://obs-course.obs.cn-east-2.myhwclouds.com/how_to_use_workflow.mp4"
         ,"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1550835840512&di=4490f345b01278065fe5d934af12ac0a&imgtype=0&src=http%3A%2F%2Fy0.ifengimg.com%2Fifengimcp%2Fpic%2F20140822%2Fd69e0188b714ee789e97_size87_w800_h1227.jpg"]
@@ -19,10 +18,7 @@ class DownloadManagerTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "下载管理器Demo"
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "添加任务", style: .plain, target: self, action: #selector(addTask))
     }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -35,20 +31,10 @@ class DownloadManagerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath) as! TaskTableViewCell
-        cell.startDownload(url: items[indexPath.row])
+        cell.setUp(url: items[indexPath.row])
         return cell
     }
     
-    @objc private func addTask() {
-        if items.count == 3 {
-            print("没了。。。。。")
-            return
-        }
-        let inx = items.count
-        items.append(modalUrls[inx])
-        self.tableView.reloadData()
-    }
- 
 
     /*
     // Override to support conditional editing of the table view.
