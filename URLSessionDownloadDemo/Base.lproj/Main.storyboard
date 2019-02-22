@@ -1,24 +1,139 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eR9-Yl-Ttl">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--IOS下载Demo-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="URLSessionDownloadDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P9D-nN-rt2">
+                                <rect key="frame" x="131" y="264" width="113" height="30"/>
+                                <state key="normal" title="URLSession下载"/>
+                                <connections>
+                                    <segue destination="r2u-Du-WQn" kind="show" id="Cnh-tu-yiA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TeD-ze-xmg">
+                                <rect key="frame" x="149" y="344" width="77" height="30"/>
+                                <state key="normal" title="下载管理器"/>
+                                <connections>
+                                    <segue destination="rkc-HC-eE5" kind="show" id="HTH-mc-nLW"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="P9D-nN-rt2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Te-hA-xb5"/>
+                            <constraint firstItem="P9D-nN-rt2" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="200" id="JJ6-SR-n8C"/>
+                            <constraint firstItem="TeD-ze-xmg" firstAttribute="top" secondItem="P9D-nN-rt2" secondAttribute="bottom" constant="50" id="TTT-iU-CgT"/>
+                            <constraint firstItem="TeD-ze-xmg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iri-9q-lLR"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="IOS下载Demo" id="LVZ-h8-tOW"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1063" y="-564"/>
+        </scene>
+        <!--Download Manager Table View Controller-->
+        <scene sceneID="2Ki-Ia-ubW">
+            <objects>
+                <tableViewController id="rkc-HC-eE5" customClass="DownloadManagerTableViewController" customModule="URLSessionDownloadDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ARj-cK-rF7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="Efl-fB-yNE" customClass="TaskTableViewCell" customModule="URLSessionDownloadDemo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Efl-fB-yNE" id="erM-7J-430">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-nk-1XC">
+                                            <rect key="frame" x="26" y="19.5" width="283" height="5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="5" id="0jz-f7-y32"/>
+                                            </constraints>
+                                        </progressView>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="准备" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MgW-Ad-ON4">
+                                            <rect key="frame" x="314" y="13.5" width="51" height="17"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="MgW-Ad-ON4" firstAttribute="centerY" secondItem="erM-7J-430" secondAttribute="centerY" id="6sn-Yg-EmJ"/>
+                                        <constraint firstItem="uBZ-nk-1XC" firstAttribute="centerY" secondItem="erM-7J-430" secondAttribute="centerY" id="Fzr-rj-x9j"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uBZ-nk-1XC" secondAttribute="trailing" constant="50" id="Qhx-tN-abj"/>
+                                        <constraint firstItem="uBZ-nk-1XC" firstAttribute="leading" secondItem="erM-7J-430" secondAttribute="leadingMargin" constant="10" id="gXj-jM-v8b"/>
+                                        <constraint firstAttribute="trailing" secondItem="MgW-Ad-ON4" secondAttribute="trailing" constant="10" id="tW9-T2-ePG"/>
+                                        <constraint firstItem="MgW-Ad-ON4" firstAttribute="leading" secondItem="uBZ-nk-1XC" secondAttribute="trailing" constant="5" id="u4F-JG-FLZ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="progressView" destination="uBZ-nk-1XC" id="fx9-Ca-fEb"/>
+                                    <outlet property="statusText" destination="MgW-Ad-ON4" id="mWv-pL-Y1O"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="rkc-HC-eE5" id="gWf-We-ach"/>
+                            <outlet property="delegate" destination="rkc-HC-eE5" id="vGp-BR-N8f"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C9X-7l-uCG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="-288"/>
+        </scene>
+        <!--URL Session Download View Controller-->
+        <scene sceneID="q7o-G1-xd1">
+            <objects>
+                <viewController id="r2u-Du-WQn" customClass="URLSessionDownloadViewController" customModule="URLSessionDownloadDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HlW-at-Kje">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="acp-aB-qGF"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eju-iE-mvu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1808" y="-967"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="3an-2j-OaK">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eR9-Yl-Ttl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WEh-ni-Uea">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="2qN-bL-r3k"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PL2-v0-HTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="-564.46776611694156"/>
         </scene>
     </scenes>
 </document>

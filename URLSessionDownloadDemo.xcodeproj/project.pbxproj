@@ -12,6 +12,11 @@
 		B13B4E11221F86F400378DAF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B13B4E0F221F86F400378DAF /* Main.storyboard */; };
 		B13B4E13221F86F600378DAF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B13B4E12221F86F600378DAF /* Assets.xcassets */; };
 		B13B4E16221F86F600378DAF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B13B4E14221F86F600378DAF /* LaunchScreen.storyboard */; };
+		B13B4E22221FC3EC00378DAF /* URLSessionDownloadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4E21221FC3EC00378DAF /* URLSessionDownloadViewController.swift */; };
+		B13B4E24221FD0D300378DAF /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4E23221FD0D300378DAF /* Downloader.swift */; };
+		B13B4E27221FE2DF00378DAF /* DownloaderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4E26221FE2DF00378DAF /* DownloaderManager.swift */; };
+		B13B4E29221FEB6D00378DAF /* DownloadManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4E28221FEB6D00378DAF /* DownloadManagerTableViewController.swift */; };
+		B13B4E2B221FED3800378DAF /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13B4E2A221FED3800378DAF /* TaskTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		B13B4E12221F86F600378DAF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B13B4E15221F86F600378DAF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B13B4E17221F86F600378DAF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B13B4E21221FC3EC00378DAF /* URLSessionDownloadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionDownloadViewController.swift; sourceTree = "<group>"; };
+		B13B4E23221FD0D300378DAF /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		B13B4E26221FE2DF00378DAF /* DownloaderManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderManager.swift; sourceTree = "<group>"; };
+		B13B4E28221FEB6D00378DAF /* DownloadManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManagerTableViewController.swift; sourceTree = "<group>"; };
+		B13B4E2A221FED3800378DAF /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +70,11 @@
 				B13B4E12221F86F600378DAF /* Assets.xcassets */,
 				B13B4E14221F86F600378DAF /* LaunchScreen.storyboard */,
 				B13B4E17221F86F600378DAF /* Info.plist */,
+				B13B4E21221FC3EC00378DAF /* URLSessionDownloadViewController.swift */,
+				B13B4E23221FD0D300378DAF /* Downloader.swift */,
+				B13B4E26221FE2DF00378DAF /* DownloaderManager.swift */,
+				B13B4E28221FEB6D00378DAF /* DownloadManagerTableViewController.swift */,
+				B13B4E2A221FED3800378DAF /* TaskTableViewCell.swift */,
 			);
 			path = URLSessionDownloadDemo;
 			sourceTree = "<group>";
@@ -135,8 +150,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B13B4E2B221FED3800378DAF /* TaskTableViewCell.swift in Sources */,
 				B13B4E0E221F86F400378DAF /* ViewController.swift in Sources */,
+				B13B4E27221FE2DF00378DAF /* DownloaderManager.swift in Sources */,
 				B13B4E0C221F86F400378DAF /* AppDelegate.swift in Sources */,
+				B13B4E29221FEB6D00378DAF /* DownloadManagerTableViewController.swift in Sources */,
+				B13B4E24221FD0D300378DAF /* Downloader.swift in Sources */,
+				B13B4E22221FC3EC00378DAF /* URLSessionDownloadViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
